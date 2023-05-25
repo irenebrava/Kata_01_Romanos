@@ -1,18 +1,28 @@
+
+from cromannumbers import RomanNumber
+
+
+
 def test_instaciar_num_romano():
     romano = RomanNumber(23)
-    assert romano.valor == 23
+    assert romano.numero == 23
     assert romano.simbolo =="XXIII"
 
-class Alumna:
-    def __init__(self,n, a):
-        self.nombre = n
-        self.apellido = a
+def test_instaciar_num_romano():
+    romano = RomanNumber(13)
+    assert romano.numero == 13
+    assert romano.simbolo =="XIII"
 
+def test_instaciar_num_romano():
+    romano = RomanNumber("XI")
+    assert romano.numero == 11
+    assert romano.simbolo =="XI"
 
+def test_instaciar_num_romano():
+    romano = RomanNumber(1)
+    assert romano.numero == 1
+    assert romano.simbolo =="I"
 
-
-def test_irene_existe():
-    irene =Alumna("Irene", "Bravo")
-    assert irene.nombre == "Irene"
-    assert irene.apellido =="Bravo" 
-/*////////////////////////////////////////////////*/
+    romano.numero = 2
+    assert romano.numero == 2
+    assert romano.simbolo =="II"
