@@ -63,25 +63,9 @@ def logica_aplastante(digito, clau):
     return res 
 
 def entero_a_romano(n_int):
-    if n_int >= 10000 and n_int < 100000:
-       l_int = [int(digito) for digito in str(n_int)]
-       n_p = int(l_int[0]+l_int[1])
-       parentesis_digito = logica_aplastante(n_p,decenas)
-       numero_mil= ("(({}))".format(parentesis_digito))
-       n_rest = n_int-(n_p*10000)
-       numero_final_2 = entero_a_romano(n_rest)
-       return numero_mil + numero_final_2
-    
-    if n_int > 3999 and n_int < 10000:
-       l_int = [int(digito) for digito in str(n_int)]
-       n_p = int(l_int[0])
-       parentesis_digito = logica_aplastante(n_p,unidades)
-       numero_mil= ("({})".format(parentesis_digito))
-       n_rest = n_int-(n_p*1000)
-       numero_final_2 = entero_a_romano(n_rest)
-       return numero_mil + numero_final_2
-       
-    
+    if n_int > 3999:
+        raise RomanNumberError("RomanNumber must be less of 4000")
+
     digitos = listar_numero(n_int)
 
     resultado = ""
@@ -107,7 +91,6 @@ def romano_a_entero(letras):
 
     valor_total = 0
     ultimo_valor = 0 
-    final_valor= 0
 
     comprueba_excepciones(letras)
 
@@ -118,23 +101,17 @@ def romano_a_entero(letras):
             raise RomanNumberError("Resta no permitida") 
         elif valor_actual <= 10 and ultimo_valor >= 500:
             raise RomanNumberError("Resta no permitida")
-        elif valor_actual <= 50 and ultimo_valor >= 1000:
-            raise RomanNumberError("Resta no permitida")
-        elif final_valor> ultimo_valor and ultimo_valor == valor_actual:
-            raise RomanNumberError("resta no")
-        elif final_valor >= valor_actual and ultimo_valor> valor_actual:
-            raise RomanNumberError("resta no")
         
 
         if valor_actual >= ultimo_valor:
             valor_total += valor_actual
         else:
             valor_total -= valor_actual
-        final_valor = ultimo_valor 
+
         ultimo_valor = valor_actual
         
 
     return valor_total
 
 if __name__ == "__main__":
-    print(entero_a_romano(45327))
+    print(entero_a_romano(11))

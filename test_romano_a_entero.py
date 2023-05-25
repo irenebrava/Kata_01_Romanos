@@ -8,6 +8,7 @@ def test_simbolos():
 def test_resta_normal():
     assert romano_a_entero("IV") == 4
     assert romano_a_entero("IX") == 9
+    assert romano_a_entero("XIX") == 19
 
 def test_sumando():
     assert romano_a_entero("CXXIII")==123
@@ -34,3 +35,17 @@ def test_restas_no():
         romano_a_entero("XM")
     with pytest.raises(RomanNumberError):
         romano_a_entero("IL")
+def test_resta_repetida():
+    with pytest.raises(RomanNumberError):
+        romano_a_entero("IIX")
+    with pytest.raises(RomanNumberError):
+        romano_a_entero("MCIIX")
+    with pytest.raises(RomanNumberError):
+        romano_a_entero("XXCC")
+    with pytest.raises(RomanNumberError):
+        romano_a_entero("CCMLV")
+def test_resta_repetida_2():
+    with pytest.raises(RomanNumberError):
+        romano_a_entero("IXIX")
+    with pytest.raises(RomanNumberError):
+        romano_a_entero("IXX")
