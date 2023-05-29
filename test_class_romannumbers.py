@@ -21,8 +21,20 @@ def test_instaciar_num_romano():
 def test_instaciar_num_romano():
     romano = RomanNumber(1)
     assert romano.numero == 1
-    assert romano.simbolo =="I"
+    assert romano._simbolo =="I"
 
     romano.numero = 2
     assert romano.numero == 2
-    assert romano.simbolo =="II"
+    assert romano._simbolo =="II"
+
+    romano.simbolo ="III"
+    assert romano.numero == 3
+    assert romano.simbolo =="III"
+
+def test_multiplicaciones():
+    romano1 = RomanNumber("X")
+    romano2= RomanNumber(5)
+
+    assert romano1 * romano2 == RomanNumber("L")
+    assert romano1 * 5 == RomanNumber(50)
+    assert romano1 * "V" == RomanNumber(50)

@@ -28,4 +28,33 @@ class RomanNumber:
          self._numero = romano_a_entero(entrada)
          self._simbolo = entrada
 
-        
+    """""
+    metodos magicos logica
+    """""  
+    def __eq__(self,otri):
+         return self.numero == otri.numero 
+    
+
+    """""
+    metodos magicos mates
+    """"" 
+
+    def __mul__(self, otro):
+         if not isinstance(otro, RomanNumber):
+              otro = RomanNumber(otro)
+         resultado = self.numero * otro.numero
+         return RomanNumber(resultado)  
+    
+
+    def __rmul__(self,otro):
+         return self.__mul__(otro)
+    
+    """""
+    metodos magicos representacion
+    """""
+    def __repr__(self):
+         return f"{self.numero}-{self.simbolo}"
+    
+    def __str__(self):
+         return self.__repr__()
+    
