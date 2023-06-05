@@ -34,7 +34,27 @@ def test_instaciar_num_romano():
 def test_multiplicaciones():
     romano1 = RomanNumber("X")
     romano2= RomanNumber(5)
-
     assert romano1 * romano2 == RomanNumber("L")
     assert romano1 * 5 == RomanNumber(50)
     assert romano1 * "V" == RomanNumber(50)
+    assert "X" * romano2 == RomanNumber("L")
+    assert 10 * romano2 == RomanNumber("L")
+
+def test_sumas():
+    romano1 = RomanNumber("X")
+    romano2= RomanNumber(5)
+    assert "X" + romano2 == RomanNumber("XV")
+    assert 10 + romano2 == RomanNumber(15)
+    assert romano1 + romano2 == RomanNumber("XV")
+    assert romano1 + 5 == RomanNumber(15)
+    assert romano1 + "V" == RomanNumber(15)
+
+def test_restas():
+    romano1 = RomanNumber("X")
+    romano2= RomanNumber(5)
+    assert romano1 - romano2 == RomanNumber("V")
+    assert romano1 - 5 == RomanNumber(5)
+    assert romano1 - "V" == RomanNumber(5)
+    
+    assert "X" - romano2 == RomanNumber("V")
+    assert 10 - romano2 == RomanNumber(5)
